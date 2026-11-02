@@ -146,15 +146,29 @@ const DATA = {
 };
 
 /* =====================================================================
-   3. NAVIGATION STATE CONTROLLER
+   3. NAVIGATION STATE CONTROLLER & DOM HELPERS
    ===================================================================== */
 let currentScreen = 'intro';
 let subIndex = 0;
 let cameraStream = null;
 
-const screenViewPort = document.getElementById('screenViewPort');
-const bottomLeftPrompt = document.getElementById('bottomLeftPrompt');
-const bottomRightPrompt = document.getElementById('bottomRightPrompt');
+function getViewport() {
+  return document.getElementById('screenViewPort');
+}
+
+function updatePromptLabels(left = "", right = "") {
+  const bl = document.getElementById('bottomLeftPrompt');
+  const br = document.getElementById('bottomRightPrompt');
+  if (bl) bl.textContent = left;
+  if (br) br.textContent = right;
+}
+
+function setContent(html) {
+  const vp = getViewport();
+  if (vp) {
+    vp.innerHTML = html;
+  }
+}
 
 function render() {
   const bottomBar = document.getElementById('screenBottomBar');
@@ -219,25 +233,29 @@ function renderIntro() {
   const bottomBar = document.getElementById('screenBottomBar');
   if (bottomBar) bottomBar.style.display = 'none';
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full w-full flex items-center justify-center overflow-hidden select-none">
       <div class="transform -translate-x-6 scale-[1.28] flex flex-col items-center justify-center">
         <img 
           src="img.png" 
           alt="CLOCK IT" 
           class="retro-sprite max-h-[195px] w-auto object-contain pointer-events-none drop-shadow-xs"
+          onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
         />
+        <div class="hidden flex flex-col items-center justify-center text-center p-2">
+          <p class="text-sm font-black text-[#1a2512] tracking-wider uppercase">NO-KYA?</p>
+          <p class="text-[11px] font-bold text-[#2a381c] mt-1">Starting up...</p>
+        </div>
       </div>
     </div>
-  `;
+  `);
 }
    
 // 2. MAIN MENU
 function renderMenu() {
-  bottomLeftPrompt.textContent = "Select";
-  bottomRightPrompt.textContent = "Press 1-0";
+  updatePromptLabels("Select", "Press 1-0");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-start overflow-y-auto lcd-scroll px-0.5 space-y-[2.8px] text-[12px] font-bold text-[#1a2512]">
       <div class="flex justify-between items-center cursor-pointer hover:bg-[#8e9c77] px-1 py-0.5 rounded" onclick="pressKey('1')">
         <span class="font-extrabold text-[#2a381c]">Press 1</span>
@@ -280,15 +298,14 @@ function renderMenu() {
         <span class="tracking-tight text-right flex-1 ml-3 font-semibold">Download Resume</span>
       </div>
     </div>
-  `;
+  `);
 }
 
 // 3. ABOUT ME SCREEN
 function renderAbout() {
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press 2";
+  updatePromptLabels("Back", "Press 2");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1 px-1 text-center">
       <div>
         <h2 class="text-lg font-black text-[#1b2612] tracking-tight mb-2">Hello there, I'm Jiya!</h2>
@@ -304,16 +321,15 @@ function renderAbout() {
       
       <div class="w-full h-[1px] bg-[#2d3a20]/20 mb-1"></div>
     </div>
-  `;
+  `);
 }
 
 // 4. TECH STACK SCREEN
 function renderTech() {
   const page = DATA.techStack[subIndex % DATA.techStack.length];
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = page.pageIndicator;
+  updatePromptLabels("Back", page.pageIndicator);
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1.5 px-1">
       <h2 class="text-center text-[15px] font-black uppercase tracking-tight text-[#1a2512]">
         ${page.title}
@@ -334,16 +350,15 @@ function renderTech() {
         <span class="w-2 h-2 rounded-full ${subIndex === 1 ? 'bg-[#1e2815]' : 'border border-[#1e2815]'}"></span>
       </div>
     </div>
-  `;
+  `);
 }
 
-// 5. PROJECT GALLERY (With clickable 🔗 link)
+// 5. PROJECT GALLERY
 function renderProjects() {
   const proj = DATA.projects[subIndex % DATA.projects.length];
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press 4";
+  updatePromptLabels("Back", "Press 4");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1 px-1">
       <h2 class="text-center text-sm font-black tracking-tight text-[#1a2512]">Project gallery</h2>
 
@@ -369,16 +384,15 @@ function renderProjects() {
         `).join('')}
       </div>
     </div>
-  `;
+  `);
 }
 
 // 6. CAREER TIMELINE
 function renderCareer() {
   const job = DATA.career[subIndex % DATA.career.length];
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press 5";
+  updatePromptLabels("Back", "Press 5");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1 px-1 text-center">
       <h2 class="text-sm font-black tracking-tight text-[#1a2512]">Career Timeline</h2>
 
@@ -400,16 +414,15 @@ function renderCareer() {
         `).join('')}
       </div>
     </div>
-  `;
+  `);
 }
 
-// 7. CREATIVE ARCHIVE (With clickable 🔗 link)
+// 7. CREATIVE ARCHIVE
 function renderCreative() {
   const item = DATA.creative[subIndex % DATA.creative.length];
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press 4";
+  updatePromptLabels("Back", "Press 4");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1 px-1 text-center">
       <h2 class="text-sm font-black tracking-tight text-[#1a2512]">Creative Archive</h2>
 
@@ -435,16 +448,15 @@ function renderCreative() {
         `).join('')}
       </div>
     </div>
-  `;
+  `);
 }
 
 // 8. LEARNING JOURNEY
 function renderLearning() {
   const item = DATA.learning[subIndex % DATA.learning.length];
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press 7";
+  updatePromptLabels("Back", "Press 7");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1 px-1 text-center">
       <h2 class="text-sm font-black tracking-tight text-[#1a2512]">Learning Journey</h2>
 
@@ -468,15 +480,14 @@ function renderLearning() {
         <span class="w-1.5 h-1.5 rounded-full ${subIndex === 1 ? 'bg-[#1e2815]' : 'border border-[#1e2815]'}"></span>
       </div>
     </div>
-  `;
+  `);
 }
 
 // 9. PIXELS OF PROGRESS
 function renderPixels() {
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press 8";
+  updatePromptLabels("Back", "Press 8");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1 px-1">
       <h2 class="text-center text-[13px] font-black uppercase tracking-wider text-[#1a2512]">PIXELS OF PROGRESS</h2>
 
@@ -501,16 +512,15 @@ function renderPixels() {
 
       <div class="w-full h-[1px] bg-[#2d3a20]/20"></div>
     </div>
-  `;
+  `);
 }
 
-// 10. LIFE BEYOND CODE (With clickable 🔗 link)
+// 10. LIFE BEYOND CODE
 function renderLife() {
   const item = DATA.life[subIndex % DATA.life.length];
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press 9";
+  updatePromptLabels("Back", "Press 9");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1 px-1 text-center">
       <h2 class="text-sm font-black tracking-tight text-[#1a2512]">Life beyond code</h2>
 
@@ -535,15 +545,14 @@ function renderLife() {
         <span class="w-1.5 h-1.5 rounded-full ${subIndex === 1 ? 'bg-[#1e2815]' : 'border border-[#1e2815]'}"></span>
       </div>
     </div>
-  `;
+  `);
 }
 
 // 11. CONTACT ME
 function renderContact() {
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press 0";
+  updatePromptLabels("Back", "Press 0");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-1 px-1">
       <div class="flex items-center justify-between px-1">
         <h2 class="text-sm font-black tracking-tight text-[#1a2512]">Contact me</h2>
@@ -569,15 +578,14 @@ function renderContact() {
 
       <div class="w-full h-[1px] bg-[#2d3a20]/20"></div>
     </div>
-  `;
+  `);
 }
 
 // 12. DOWNLOAD RESUME / CV
 function renderResume() {
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Press *";
+  updatePromptLabels("Back", "Press *");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-3 px-1 text-center">
       <div class="my-auto">
         <h2 class="text-xl font-black leading-tight text-[#16210f] tracking-tight">
@@ -597,15 +605,14 @@ function renderResume() {
 
       <div class="w-full h-[1px] bg-[#2d3a20]/20 mb-1"></div>
     </div>
-  `;
+  `);
 }
 
 // 13. PHOTO BOOTH
 function renderCamera() {
-  bottomLeftPrompt.textContent = "Back";
-  bottomRightPrompt.textContent = "Snap (*)";
+  updatePromptLabels("Back", "Snap (*)");
 
-  screenViewPort.innerHTML = `
+  setContent(`
     <div class="h-full flex flex-col justify-between pt-0.5 text-center">
       <h2 class="text-[12px] font-black uppercase tracking-tight text-[#1a2512]">CAPTURE THE MOMENT</h2>
 
@@ -614,7 +621,7 @@ function renderCamera() {
           <video id="webcamVideo" autoplay playsinline class="w-full h-full object-cover filter grayscale contrast-150 brightness-95"></video>
           <canvas id="photoCanvas" class="hidden w-full h-full object-cover filter grayscale contrast-150 brightness-95"></canvas>
           <div id="cameraPlaceholder" class="text-[10px] text-zinc-300 font-bold px-2">
-            Click "Start Camera" or snap photo
+            Click "Start Cam" or snap photo
           </div>
         </div>
 
@@ -628,7 +635,7 @@ function renderCamera() {
         <button onclick="takeSnapshot()" class="px-2 py-0.5 bg-[#1e2815] rounded text-[#9ba983] hover:opacity-90 cursor-pointer">Snap Selfie</button>
       </div>
     </div>
-  `;
+  `);
 }
 
 /* =====================================================================
@@ -824,8 +831,6 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-bottomLeftPrompt.addEventListener('click', handleSoftLeft);
-
 /* =====================================================================
    8. DYNAMIC AUTO-FIT TO SCREEN HEIGHT ON MOBILE
    ===================================================================== */
@@ -834,7 +839,6 @@ function adjustPhoneScale() {
   if (!phone) return;
 
   if (window.innerWidth < 768) {
-    // Determine screen height and fit the 740px chassis without scroll/overflow
     const availableHeight = window.innerHeight - 20;
     const baseHeight = 740;
     const scale = Math.min(1, availableHeight / baseHeight);
@@ -842,7 +846,6 @@ function adjustPhoneScale() {
     phone.style.transformOrigin = 'center center';
     phone.style.marginBottom = '0px';
   } else {
-    // Reset to normal on laptops/desktops
     phone.style.transform = 'none';
   }
 }
@@ -853,9 +856,15 @@ window.addEventListener('orientationchange', adjustPhoneScale);
 /* =====================================================================
    9. INITIALIZE BOOT SEQUENCE
    ===================================================================== */
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', () => {
+  const blPrompt = document.getElementById('bottomLeftPrompt');
+  if (blPrompt) {
+    blPrompt.addEventListener('click', handleSoftLeft);
+  }
+
   adjustPhoneScale();
   render();
+
   setTimeout(() => {
     if (currentScreen === 'intro') {
       playBeep(523, 0.08);
@@ -864,4 +873,4 @@ window.onload = function() {
       switchScreen('menu');
     }
   }, 2800);
-};
+});
