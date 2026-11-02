@@ -145,6 +145,14 @@ const DATA = {
   ]
 };
 
+// Black retro-styled link icon that matches the height of adjacent text
+const LINK_ICON_HTML = `
+  <svg class="inline-block w-[1.05em] h-[1.05em] align-middle text-[#121c0b] fill-none stroke-current stroke-[2.4] shrink-0" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+`;
+
 /* =====================================================================
    3. NAVIGATION STATE CONTROLLER & DOM HELPERS
    ===================================================================== */
@@ -353,7 +361,7 @@ function renderTech() {
   `);
 }
 
-// 5. PROJECT GALLERY
+// 5. PROJECT GALLERY (With Black Link Icon)
 function renderProjects() {
   const proj = DATA.projects[subIndex % DATA.projects.length];
   updatePromptLabels("Back", "Press 4");
@@ -366,9 +374,9 @@ function renderProjects() {
         <button onclick="handleNavPrev()" class="text-base font-black px-1 py-1 text-[#2d3a20] hover:scale-125 cursor-pointer">&lt;</button>
         
         <div class="flex-1 text-center px-1.5">
-          <a href="${proj.link}" target="_blank" rel="noopener noreferrer" class="font-extrabold text-[13.5px] leading-snug text-[#182310] inline-flex items-center justify-center gap-1.5 hover:underline cursor-pointer">
+          <a href="${proj.link}" target="_blank" rel="noopener noreferrer" class="font-extrabold text-[14px] leading-snug text-[#121c0b] inline-flex items-center justify-center gap-1.5 hover:underline cursor-pointer">
             <span>${proj.title}</span>
-            <span class="text-[11px] leading-none inline-block">🔗</span>
+            ${LINK_ICON_HTML}
           </a>
           <p class="text-[11.5px] leading-tight font-medium text-[#25321a] mt-2">
             ${proj.desc}
@@ -417,7 +425,7 @@ function renderCareer() {
   `);
 }
 
-// 7. CREATIVE ARCHIVE
+// 7. CREATIVE ARCHIVE (With Black Link Icon)
 function renderCreative() {
   const item = DATA.creative[subIndex % DATA.creative.length];
   updatePromptLabels("Back", "Press 4");
@@ -430,9 +438,9 @@ function renderCreative() {
         <button onclick="handleNavPrev()" class="text-base font-black px-1 text-[#2d3a20] cursor-pointer">&lt;</button>
         
         <div class="flex-1 px-1.5">
-          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="font-extrabold text-[14px] text-[#192511] inline-flex items-center justify-center gap-1.5 hover:underline cursor-pointer">
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="font-extrabold text-[14px] text-[#121c0b] inline-flex items-center justify-center gap-1.5 hover:underline cursor-pointer">
             <span>${item.name}</span>
-            <span class="text-[11px] leading-none inline-block">🔗</span>
+            ${LINK_ICON_HTML}
           </a>
           <p class="text-[11.5px] font-medium leading-tight text-[#222e17] mt-2.5">
             ${item.desc}
@@ -483,7 +491,7 @@ function renderLearning() {
   `);
 }
 
-// 9. PIXELS OF PROGRESS
+// 9. PIXELS OF PROGRESS (With Black Link Icons)
 function renderPixels() {
   updatePromptLabels("Back", "Press 8");
 
@@ -491,18 +499,18 @@ function renderPixels() {
     <div class="h-full flex flex-col justify-between pt-1 px-1">
       <h2 class="text-center text-[13px] font-black uppercase tracking-wider text-[#1a2512]">PIXELS OF PROGRESS</h2>
 
-      <div class="space-y-2 my-auto px-1">
-        <a href="${DATA.progressItems[0].link}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-[11.5px] font-bold text-[#1c2713] cursor-pointer hover:underline">
+      <div class="space-y-2.5 my-auto px-1">
+        <a href="${DATA.progressItems[0].link}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-[12px] font-bold text-[#121c0b] cursor-pointer hover:underline">
           <span>WhatsApp-Style Portfolio</span>
-          <span class="text-[11px]">🔗</span>
+          ${LINK_ICON_HTML}
         </a>
-        <a href="${DATA.progressItems[1].link}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-[11.5px] font-bold text-[#1c2713] cursor-pointer hover:underline">
+        <a href="${DATA.progressItems[1].link}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-[12px] font-bold text-[#121c0b] cursor-pointer hover:underline">
           <span>Portfolio Times</span>
-          <span class="text-[11px]">🔗</span>
+          ${LINK_ICON_HTML}
         </a>
-        <a href="${DATA.progressItems[2].link}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-[11.5px] font-bold text-[#1c2713] cursor-pointer hover:underline">
+        <a href="${DATA.progressItems[2].link}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between text-[12px] font-bold text-[#121c0b] cursor-pointer hover:underline">
           <span>Personal Portfolio Website</span>
-          <span class="text-[11px]">🔗</span>
+          ${LINK_ICON_HTML}
         </a>
         <div class="border-t border-[#2d3a20]/25 pt-1.5 text-[11.5px] font-black text-[#1a2611]">
           <div>Nokia-Style Portfolio —</div>
@@ -515,7 +523,7 @@ function renderPixels() {
   `);
 }
 
-// 10. LIFE BEYOND CODE
+// 10. LIFE BEYOND CODE (With Black Link Icon)
 function renderLife() {
   const item = DATA.life[subIndex % DATA.life.length];
   updatePromptLabels("Back", "Press 9");
@@ -528,9 +536,9 @@ function renderLife() {
         <button onclick="handleNavPrev()" class="text-base font-black px-1 text-[#2d3a20] cursor-pointer">&lt;</button>
         
         <div class="flex-1 px-1">
-          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="font-black text-[13px] leading-tight text-[#182410] inline-flex items-center justify-center gap-1.5 hover:underline cursor-pointer">
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="font-black text-[13.5px] leading-tight text-[#121c0b] inline-flex items-center justify-center gap-1.5 hover:underline cursor-pointer">
             <span>${item.title}</span>
-            <span class="text-[11px] leading-none inline-block">🔗</span>
+            ${LINK_ICON_HTML}
           </a>
           <p class="text-[11.5px] leading-snug font-medium text-[#243118] mt-2.5 px-1">
             ${item.desc}
@@ -556,7 +564,7 @@ function renderContact() {
     <div class="h-full flex flex-col justify-between pt-1 px-1">
       <div class="flex items-center justify-between px-1">
         <h2 class="text-sm font-black tracking-tight text-[#1a2512]">Contact me</h2>
-        <span class="text-[11px] font-bold">↗</span>
+        <span class="text-[12px] font-bold text-[#121c0b]">↗</span>
       </div>
 
       <div class="space-y-2.5 my-auto px-1 text-[12px] font-bold text-[#1a2512]">
@@ -598,7 +606,7 @@ function renderResume() {
         <div class="mt-4">
           <a href="mailto:jiya17batra@gmail.com?subject=Resume%20Request%20-%20Jiya%20Batra" class="inline-flex items-center gap-1.5 text-xs font-black tracking-wider text-[#1a2512] border-b border-[#1a2512] pb-0.5 hover:opacity-75">
             <span>TAKE A PEEK ;)</span>
-            <span class="text-[11px]">↗</span>
+            <span class="text-[12px] text-[#121c0b]">↗</span>
           </a>
         </div>
       </div>
@@ -640,7 +648,7 @@ function renderCamera() {
 
 /* =====================================================================
    5. PHOTO BOOTH LOGIC
-   ===================================================================== */
+   ==================================================================== */
 async function initCamera() {
   playBeep(880, 0.08);
   const video = document.getElementById('webcamVideo');
