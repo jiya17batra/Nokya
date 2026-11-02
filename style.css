@@ -22,14 +22,21 @@
 
 body {
   background-color: #f7efe6;
-  background-image: 
-    radial-gradient(#e5d8cb 1.5px, transparent 1.5px),
-    radial-gradient(#dfd1c3 1.5px, #f7efe6 1.5px);
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
+}
+
+/* Show vintage dotted wallpaper on tablets and desktops only */
+@media (min-width: 768px) {
+  body {
+    background-image: 
+      radial-gradient(#e5d8cb 1.5px, transparent 1.5px),
+      radial-gradient(#dfd1c3 1.5px, #f7efe6 1.5px);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+  }
 }
 
 /* LCD Screen Styling */
@@ -54,22 +61,22 @@ body {
 }
 
 /* Pixelated Retro Sprite Animation for CLOCK IT */
-    .retro-sprite {
-      image-rendering: pixelated;
-      image-rendering: -moz-crisp-edges;
-      image-rendering: crisp-edges;
-      transform-origin: center center;
-      animation: clockItTap 1.2s steps(2, jump-none) infinite;
-    }
+.retro-sprite {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transform-origin: center center;
+  animation: clockItTap 1.2s steps(2, jump-none) infinite;
+}
 
-    @keyframes clockItTap {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      80% {
-        transform: translateY(2px);
-      }
-    }
+@keyframes clockItTap {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(2px);
+  }
+}
 
 /* Marquee ticker animation */
 .marquee-wrapper {
