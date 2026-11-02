@@ -13,7 +13,9 @@
   --key-subtext: #664150;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   user-select: none;
   -webkit-user-select: none;
@@ -48,7 +50,7 @@ body {
   background-size: 100% 3px, 3px 100%;
   color: var(--lcd-pixel-ink);
   font-family: 'Plus Jakarta Sans', sans-serif;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.38), inset 0 0 3px rgba(0,0,0,0.45);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.38), inset 0 0 3px rgba(0, 0, 0, 0.45);
 }
 
 /* LCD Scanlines & Subtle Glow */
@@ -120,7 +122,8 @@ body {
   transition: all 0.08s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.phone-key:active, .phone-key.pressed {
+.phone-key:active, 
+.phone-key.pressed {
   transform: translateY(3.5px);
   box-shadow: 
     0 0.5px 0 #be6981,
@@ -139,7 +142,8 @@ body {
   transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
-.dpad-center:active, .dpad-center.pressed {
+.dpad-center:active, 
+.dpad-center.pressed {
   transform: translateY(2.5px);
   box-shadow: 0 0.5px 0 #be6981, inset 0 1px 2px rgba(0, 0, 0, 0.15);
 }
@@ -150,8 +154,17 @@ body {
 }
 
 /* Custom Scrollbar for mini LCD screens */
+.lcd-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(30, 40, 21, 0.35) transparent;
+}
+
 .lcd-scroll::-webkit-scrollbar {
   width: 3px;
+}
+
+.lcd-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .lcd-scroll::-webkit-scrollbar-thumb {
