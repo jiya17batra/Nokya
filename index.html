@@ -13,7 +13,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="flex flex-col items-center justify-center p-0 md:p-6 min-h-screen overflow-hidden md:overflow-auto">
+<body class="flex flex-col items-center justify-center p-0 md:p-6 min-h-screen overflow-hidden md:overflow-auto bg-[#faf6f0]">
   <!-- Desktop Hint Bar -->
   <div class="hidden md:flex items-center gap-6 mb-3 text-xs tracking-wide text-[#784f5d] font-semibold bg-[#fce7ee] px-5 py-2 rounded-full shadow-sm border border-[#f0c2cf]">
     <span class="flex items-center gap-1.5"><kbd class="bg-white px-2 py-0.5 rounded shadow-xs text-black font-mono">0-9</kbd> Jump to Section</span>
@@ -49,7 +49,7 @@
       <div id="lcdDisplay" class="lcd-screen-inner w-full h-[286px] rounded-[18px] p-3 flex flex-col justify-between relative overflow-hidden text-[13px] leading-tight select-none">
 
         <!-- Screen Top Status Bar -->
-        <div class="flex items-center justify-between gap-1 pb-1.5 border-b border-[#2d3a20]/30 text-[10px] tracking-tight font-bold">
+        <div id="screenTopBar" class="flex items-center justify-between gap-1 pb-1 border-b border-[#2d3a20]/30 text-[10px] tracking-tight font-bold shrink-0">
           <!-- Signal Dots -->
           <div class="flex items-end gap-0.5 h-3">
             <span class="w-1 h-1 bg-[#1e2815] rounded-xs"></span>
@@ -59,7 +59,7 @@
           </div>
 
           <!-- Continuous Marquee Ticker -->
-          <div class="marquee-wrapper flex-1 mx-2 overflow-hidden">
+          <div class="marquee-wrapper flex-1 mx-2 overflow-hidden whitespace-nowrap">
             <div class="marquee-content uppercase font-semibold text-[9.5px] text-[#222f18]">
               HEY, I'M JIYA. WELCOME TO MY CREATIVE SPACE. &nbsp;&nbsp; HEY, I'M JIYA. WELCOME TO MY CREATIVE SPACE.
             </div>
@@ -74,13 +74,13 @@
           </div>
         </div>
 
-        <!-- SCREEN CONTENT ROUTER -->
-        <div id="screenViewPort" class="flex-1 w-full py-1.5 flex flex-col justify-between overflow-hidden">
+        <!-- SCREEN CONTENT ROUTER (flex-1 and min-h-0 ensure inner percentage heights resolve properly) -->
+        <div id="screenViewPort" class="flex-1 w-full min-h-0 py-1 flex flex-col overflow-hidden relative">
           <!-- Dynamic Content Rendered Here -->
         </div>
 
         <!-- Screen Bottom Navigation Prompt -->
-        <div id="screenBottomBar" class="pt-1 border-t border-[#2d3a20]/30 flex justify-between items-center text-[10.5px] font-bold text-[#202c16]">
+        <div id="screenBottomBar" class="pt-1 border-t border-[#2d3a20]/30 flex justify-between items-center text-[10.5px] font-bold text-[#202c16] shrink-0">
           <span id="bottomLeftPrompt" class="cursor-pointer hover:underline">Back</span>
           <span id="bottomRightPrompt">Press 1</span>
         </div>
@@ -92,7 +92,7 @@
     <div class="w-full mt-4 mb-2 bg-[#d6557b] p-2 rounded-[28px] flex items-center justify-between px-3 shadow-inner border border-[#be456a]">
       
       <!-- Left Call / Action Rocker -->
-      <button id="btnSoftLeft" onclick="handleSoftLeft()" class="w-14 h-8 rounded-full bg-[#f9bccd] shadow-sm active:translate-y-0.5 border border-[#e493a9] flex items-center justify-center text-[#7e2541] font-bold transition-all" title="Back / Select">
+      <button id="btnSoftLeft" onclick="handleSoftLeft()" class="w-14 h-8 rounded-full bg-[#f9bccd] shadow-sm active:translate-y-0.5 border border-[#e493a9] flex items-center justify-center text-[#7e2541] font-bold transition-all cursor-pointer" title="Back / Select">
         <svg class="w-4 h-3 stroke-current stroke-2 fill-none" viewBox="0 0 24 12">
           <path d="M2 9 C 8 2, 16 2, 22 9" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -100,23 +100,23 @@
 
       <!-- Center Directional D-Pad Navigation Button -->
       <div class="flex items-center gap-1.5">
-        <button id="btnNavPrev" onclick="handleNavPrev()" class="w-6 h-8 flex items-center justify-center text-[#ffe2ea] active:scale-90" title="Previous Item">
+        <button id="btnNavPrev" onclick="handleNavPrev()" class="w-6 h-8 flex items-center justify-center text-[#ffe2ea] active:scale-90 cursor-pointer" title="Previous Item">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
         </button>
         
-        <button id="btnCenterAction" onclick="handleCenterSelect()" class="dpad-center w-14 h-14 rounded-full flex flex-col items-center justify-between py-1 text-[#78233f] font-extrabold text-[11px] shadow-md border border-[#e89db1]" title="Up / Down / Select">
+        <button id="btnCenterAction" onclick="handleCenterSelect()" class="dpad-center w-14 h-14 rounded-full flex flex-col items-center justify-between py-1 text-[#78233f] font-extrabold text-[11px] shadow-md border border-[#e89db1] cursor-pointer" title="Up / Down / Select">
           <span class="text-[9px] leading-none text-[#7b2440] font-black">▲</span>
           <span class="w-2.5 h-2.5 rounded-full bg-[#d6557b]/30 inline-block"></span>
           <span class="text-[9px] leading-none text-[#7b2440] font-black">▼</span>
         </button>
 
-        <button id="btnNavNext" onclick="handleNavNext()" class="w-6 h-8 flex items-center justify-center text-[#ffe2ea] active:scale-90" title="Next Item">
+        <button id="btnNavNext" onclick="handleNavNext()" class="w-6 h-8 flex items-center justify-center text-[#ffe2ea] active:scale-90 cursor-pointer" title="Next Item">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
         </button>
       </div>
 
       <!-- Right Soft / End Rocker -->
-      <button id="btnSoftRight" onclick="handleSoftRight()" class="w-14 h-8 rounded-full bg-[#f9bccd] shadow-sm active:translate-y-0.5 border border-[#e493a9] flex items-center justify-center text-[#7e2541] font-bold transition-all" title="Options / Forward">
+      <button id="btnSoftRight" onclick="handleSoftRight()" class="w-14 h-8 rounded-full bg-[#f9bccd] shadow-sm active:translate-y-0.5 border border-[#e493a9] flex items-center justify-center text-[#7e2541] font-bold transition-all cursor-pointer" title="Options / Forward">
         <svg class="w-4 h-3 stroke-current stroke-2 fill-none" viewBox="0 0 24 12">
           <path d="M2 9 C 8 2, 16 2, 22 9" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -206,13 +206,13 @@
 
   <!-- Bottom Interactive Quick Actions Strip -->
   <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-[#834f60]">
-    <button onclick="switchScreen('camera')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5">
+    <button onclick="switchScreen('camera')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5 cursor-pointer">
       <span>📷</span> Open Photo Booth (Page 2)
     </button>
-    <button onclick="switchScreen('intro')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5">
+    <button onclick="switchScreen('intro')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5 cursor-pointer">
       <span>✨</span> Replay "CLOCK IT" Boot
     </button>
-    <button onclick="switchScreen('resume')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5">
+    <button onclick="switchScreen('resume')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5 cursor-pointer">
       <span>📄</span> View CV
     </button>
   </div>
