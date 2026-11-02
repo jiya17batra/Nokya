@@ -94,15 +94,18 @@ const DATA = {
   creative: [
     {
       name: "Pancha Mahabhuta",
-      desc: "Bringing the five elements to life through motion and visual storytelling." link: "https://jiya17batra.github.io/Pancha-Mahabhuta/"
+      desc: "Bringing the five elements to life through motion and visual storytelling.",
+      link: "https://jiya17batra.github.io/Pancha-Mahabhuta/"
     },
     {
       name: "Ved-Aura",
-      desc: "Exploring cultural aesthetics through creative animation and visual design." link: "https://jiya17batra.github.io/Ved-Aura----HTML-CSS-GSAP-drippin-in-smooth-vibes/"
+      desc: "Exploring cultural aesthetics through creative animation and visual design.",
+      link: "https://jiya17batra.github.io/Ved-Aura----HTML-CSS-GSAP-drippin-in-smooth-vibes/"
     },
     {
       name: "Ice Cream Palette",
-      desc: "A playful colour exploration through flavour-inspired visuals and animation." link: "https://jiya17batra.github.io/Ice-Cream-Palette/"
+      desc: "A playful colour exploration through flavour-inspired visuals and animation.",
+      link: "https://jiya17batra.github.io/Ice-Cream-Palette/"
     }
   ],
 
@@ -131,11 +134,13 @@ const DATA = {
   life: [
     {
       title: "01. National-Level Representation — 2026",
-      desc: "Honoured to represent Telangana at the National Youth Exchange." link: "https://lnkd.in/p/djrd6avd"
+      desc: "Honoured to represent Telangana at the National Youth Exchange.",
+      link: "https://lnkd.in/p/djrd6avd"
     },
     {
       title: "02. Team Leadership Recognition — 2024",
-      desc: "Recognized by Dr. G. Satheesh Reddy, Former DRDO Chairman, for team leadership." link: "https://www.instagram.com/p/DVyVHf8E4KJ/?utm_source=ig_web_copy_link&dlrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA=="
+      desc: "Recognized by Dr. G. Satheesh Reddy, Former DRDO Chairman, for team leadership.",
+      link: "https://www.instagram.com/p/DVyVHf8E4KJ/?utm_source=ig_web_copy_link&dlrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA=="
     }
   ]
 };
@@ -152,14 +157,14 @@ const bottomLeftPrompt = document.getElementById('bottomLeftPrompt');
 const bottomRightPrompt = document.getElementById('bottomRightPrompt');
 
 function render() {
-      // Show bottom bar for all screens except 'intro'
-      const bottomBar = document.getElementById('screenBottomBar');
-      if (bottomBar) bottomBar.style.display = (currentScreen === 'intro') ? 'none' : 'flex';
+  // Show bottom bar for all screens except 'intro'
+  const bottomBar = document.getElementById('screenBottomBar');
+  if (bottomBar) bottomBar.style.display = (currentScreen === 'intro') ? 'none' : 'flex';
 
-      if (currentScreen !== 'camera' && cameraStream) {
-        cameraStream.getTracks().forEach(track => track.stop());
-        cameraStream = null;
-      }
+  if (currentScreen !== 'camera' && cameraStream) {
+    cameraStream.getTracks().forEach(track => track.stop());
+    cameraStream = null;
+  }
 
   switch (currentScreen) {
     case 'intro':
@@ -210,24 +215,23 @@ function render() {
    4. SCREEN RENDERERS
    ===================================================================== */
 
-// 1. INTRO / BOOT SCREEN - Shifted further left to touch the bezel
-    function renderIntro() {
-      const bottomBar = document.getElementById('screenBottomBar');
-      if (bottomBar) bottomBar.style.display = 'none';
+// 1. INTRO / BOOT SCREEN
+function renderIntro() {
+  const bottomBar = document.getElementById('screenBottomBar');
+  if (bottomBar) bottomBar.style.display = 'none';
 
-      screenViewPort.innerHTML = `
-        <div class="h-full w-full flex items-center justify-center overflow-hidden select-none">
-          <!-- -translate-x-6 brings the wrist right up against the left border -->
-          <div class="transform -translate-x-6 scale-[1.28] flex flex-col items-center justify-center">
-            <img 
-              src="img.png" 
-              alt="CLOCK IT" 
-              class="retro-sprite max-h-[195px] w-auto object-contain pointer-events-none drop-shadow-xs"
-            />
-          </div>
-        </div>
-      `;
-    }
+  screenViewPort.innerHTML = `
+    <div class="h-full w-full flex items-center justify-center overflow-hidden select-none">
+      <div class="transform -translate-x-6 scale-[1.28] flex flex-col items-center justify-center">
+        <img 
+          src="img.png" 
+          alt="CLOCK IT" 
+          class="retro-sprite max-h-[195px] w-auto object-contain pointer-events-none drop-shadow-xs"
+        />
+      </div>
+    </div>
+  `;
+}
    
 // 2. MAIN MENU
 function renderMenu() {
