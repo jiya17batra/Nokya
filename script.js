@@ -352,10 +352,10 @@ function renderProjects() {
         <button onclick="handleNavPrev()" class="text-base font-black px-1 py-1 text-[#2d3a20] hover:scale-125 cursor-pointer">&lt;</button>
         
         <div class="flex-1 text-center px-1.5">
-          <div class="font-extrabold text-[13.5px] leading-snug text-[#182310] flex items-center justify-center gap-1">
-            <span>${proj.title}</span>
-            <span class="text-[10px]">↗</span>
-          </div>
+          <a href="${proj.link}" target="_blank" rel="noopener noreferrer" class="font-extrabold text-[13.5px] leading-snug text-[#182310] inline-flex items-center justify-center gap-1 hover:underline cursor-pointer">
+              <span>${proj.title}</span>
+              <span class="text-[10px]">↗</span>
+          </a>
           <p class="text-[11.5px] leading-tight font-medium text-[#25321a] mt-2">
             ${proj.desc}
           </p>
