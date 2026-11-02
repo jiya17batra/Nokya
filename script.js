@@ -54,17 +54,17 @@ const DATA = {
     {
       title: "Banking Transaction Analysis",
       desc: "Turning transaction data into meaningful insights through interactive dashboards.",
-      link: "https://github.com/jiya17batra"
+      link: "https://jiya17batra.github.io/Banking-Transaction-Analysis/"
     },
     {
       title: "AI Company Research Assistant",
       desc: "Exploring AI-powered research to simplify company analysis and discovery.",
-      link: "https://github.com/jiya17batra"
+      link: "https://ai-company-research-aame3ra1t-jiya17batra-2918s-projects.vercel.app/"
     },
     {
       title: "Good Morning, India",
       desc: "A creative digital tribute blending Indian classical music, design and animation.",
-      link: "https://github.com/jiya17batra"
+      link: "https://good-morning-india-psi.vercel.app/"
     },
     {
       title: "Nazariya Booth (Photo Booth)",
@@ -94,15 +94,15 @@ const DATA = {
   creative: [
     {
       name: "Pancha Mahabhuta",
-      desc: "Bringing the five elements to life through motion and visual storytelling."
+      desc: "Bringing the five elements to life through motion and visual storytelling." link: "https://jiya17batra.github.io/Pancha-Mahabhuta/"
     },
     {
       name: "Ved-Aura",
-      desc: "Exploring cultural aesthetics through creative animation and visual design."
+      desc: "Exploring cultural aesthetics through creative animation and visual design." link: "https://jiya17batra.github.io/Ved-Aura----HTML-CSS-GSAP-drippin-in-smooth-vibes/"
     },
     {
       name: "Ice Cream Palette",
-      desc: "A playful colour exploration through flavour-inspired visuals and animation."
+      desc: "A playful colour exploration through flavour-inspired visuals and animation." link: "https://jiya17batra.github.io/Ice-Cream-Palette/"
     }
   ],
 
@@ -122,20 +122,20 @@ const DATA = {
   ],
 
   progressItems: [
-    { title: "WhatsApp-Style Portfolio", link: "#" },
-    { title: "Portfolio Times", link: "#" },
-    { title: "Personal Portfolio Website", link: "#" },
+    { title: "WhatsApp-Style Portfolio", link: "https://jiya-portfolio-2en7.vercel.app/" },
+    { title: "Portfolio Times", link: "https://jiya17batra.github.io/The-Portfolio-Times/" },
+    { title: "Personal Portfolio Website", link: "https://jiya17batra.github.io/Interactive-Portfolio/" },
     { title: "Nokia-Style Portfolio — YOU'RE HERE! ;)", current: true }
   ],
 
   life: [
     {
       title: "01. National-Level Representation — 2026",
-      desc: "Honoured to represent Telangana at the National Youth Exchange."
+      desc: "Honoured to represent Telangana at the National Youth Exchange." link: "https://lnkd.in/p/djrd6avd"
     },
     {
       title: "02. Team Leadership Recognition — 2024",
-      desc: "Recognized by Dr. G. Satheesh Reddy, Former DRDO Chairman, for team leadership."
+      desc: "Recognized by Dr. G. Satheesh Reddy, Former DRDO Chairman, for team leadership." link: "https://www.instagram.com/p/DVyVHf8E4KJ/?utm_source=ig_web_copy_link&dlrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA=="
     }
   ]
 };
