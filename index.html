@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>No-Kya? | Jiya's Creative Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for Retro LCD, Vintage Sans & Handwritten Polaroid Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=VT323&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col items-center justify-center p-3 sm:p-6 min-h-screen">
+
+  <!-- Desktop Hint Bar -->
+  <div class="hidden md:flex items-center gap-6 mb-3 text-xs tracking-wide text-[#784f5d] font-semibold bg-[#fce7ee] px-5 py-2 rounded-full shadow-sm border border-[#f0c2cf]">
+    <span class="flex items-center gap-1.5"><kbd class="bg-white px-2 py-0.5 rounded shadow-xs text-black font-mono">0-9</kbd> Jump to Section</span>
+    <span class="flex items-center gap-1.5"><kbd class="bg-white px-2 py-0.5 rounded shadow-xs text-black font-mono">← / →</kbd> Next / Previous Sub-Page</span>
+    <span class="flex items-center gap-1.5"><kbd class="bg-white px-2 py-0.5 rounded shadow-xs text-black font-mono">Esc</kbd> Back to Menu</span>
+    <span class="flex items-center gap-1.5"><kbd class="bg-white px-2 py-0.5 rounded shadow-xs text-black font-mono">C</kbd> Camera Photo Booth</span>
+  </div>
+
+  <!-- MAIN NOKIA RETRO PHONE CHASSIS -->
+  <div id="phoneDevice" class="relative phone-outer-shell w-[340px] sm:w-[370px] min-h-[740px] rounded-[52px] p-5 pb-7 flex flex-col justify-between items-center transition-all duration-300">
+
+    <!-- Top Speaker Slots Pill -->
+    <div class="w-full flex justify-center items-center pt-1.5 pb-2">
+      <div class="w-28 h-4 rounded-full bg-[#c95175] flex items-center justify-center gap-2.5 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-[#35101a] shadow-xs inline-block"></span>
+        <span class="w-2 h-2 rounded-full bg-[#35101a] shadow-xs inline-block"></span>
+        <span class="w-2 h-2 rounded-full bg-[#35101a] shadow-xs inline-block"></span>
+      </div>
+    </div>
+
+    <!-- Retro Brand Header "No-Kya?" -->
+    <div class="w-full text-center my-0.5">
+      <h1 class="text-2xl font-black text-[#d3537a] tracking-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)] font-sans">No-Kya?</h1>
+      <div class="w-[92%] mx-auto h-[1.5px] bg-[#f8b2c4] mt-1 shadow-[0_1px_1px_rgba(255,255,255,0.8)]"></div>
+    </div>
+
+    <!-- RETRO LCD SCREEN BEZEL -->
+    <div class="lcd-bezel w-full mt-3 p-2 rounded-[24px] relative">
+      <!-- High-gloss screen reflection glare -->
+      <div class="absolute inset-0 rounded-[24px] pointer-events-none bg-gradient-to-tr from-transparent via-white/10 to-transparent z-20"></div>
+
+      <!-- ACTIVE LCD SCREEN CONTAINER -->
+      <div id="lcdDisplay" class="lcd-screen-inner w-full h-[286px] rounded-[18px] p-3 flex flex-col justify-between relative overflow-hidden text-[13px] leading-tight select-none">
+
+        <!-- Screen Top Status Bar -->
+        <div class="flex items-center justify-between gap-1 pb-1.5 border-b border-[#2d3a20]/30 text-[10px] tracking-tight font-bold">
+          <!-- Signal Dots -->
+          <div class="flex items-end gap-0.5 h-3">
+            <span class="w-1 h-1 bg-[#1e2815] rounded-xs"></span>
+            <span class="w-1 h-1.5 bg-[#1e2815] rounded-xs"></span>
+            <span class="w-1 h-2 bg-[#1e2815] rounded-xs"></span>
+            <span class="w-1 h-2.5 bg-[#1e2815] rounded-xs"></span>
+          </div>
+
+          <!-- Continuous Marquee Ticker -->
+          <div class="marquee-wrapper flex-1 mx-2 overflow-hidden">
+            <div class="marquee-content uppercase font-semibold text-[9.5px] text-[#222f18]">
+              HEY, I'M JIYA. WELCOME TO MY CREATIVE SPACE. &nbsp;&nbsp; HEY, I'M JIYA. WELCOME TO MY CREATIVE SPACE.
+            </div>
+          </div>
+
+          <!-- Battery Icon -->
+          <div class="flex items-center">
+            <div class="w-4 h-2.5 border border-[#1e2815] p-[1px] rounded-xs flex items-center">
+              <div class="w-full h-full bg-[#1e2815]"></div>
+            </div>
+            <div class="w-0.5 h-1 bg-[#1e2815] rounded-r-xs"></div>
+          </div>
+        </div>
+
+        <!-- SCREEN CONTENT ROUTER -->
+        <div id="screenViewPort" class="flex-1 w-full py-1.5 flex flex-col justify-between overflow-hidden">
+          <!-- Dynamic Content Rendered Here -->
+        </div>
+
+        <!-- Screen Bottom Navigation Prompt -->
+        <div id="screenBottomBar" class="pt-1 border-t border-[#2d3a20]/30 flex justify-between items-center text-[10.5px] font-bold text-[#202c16]">
+          <span id="bottomLeftPrompt" class="cursor-pointer hover:underline">Back</span>
+          <span id="bottomRightPrompt">Press 1</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- UPPER NAVIGATION CONTROL BAR (Pill Cluster) -->
+    <div class="w-full mt-4 mb-2 bg-[#d6557b] p-2 rounded-[28px] flex items-center justify-between px-3 shadow-inner border border-[#be456a]">
+      
+      <!-- Left Call / Action Rocker -->
+      <button id="btnSoftLeft" onclick="handleSoftLeft()" class="w-14 h-8 rounded-full bg-[#f9bccd] shadow-sm active:translate-y-0.5 border border-[#e493a9] flex items-center justify-center text-[#7e2541] font-bold transition-all" title="Back / Select">
+        <svg class="w-4 h-3 stroke-current stroke-2 fill-none" viewBox="0 0 24 12">
+          <path d="M2 9 C 8 2, 16 2, 22 9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Center Directional D-Pad Navigation Button -->
+      <div class="flex items-center gap-1.5">
+        <button id="btnNavPrev" onclick="handleNavPrev()" class="w-6 h-8 flex items-center justify-center text-[#ffe2ea] active:scale-90" title="Previous Item">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        
+        <button id="btnCenterAction" onclick="handleCenterSelect()" class="dpad-center w-14 h-14 rounded-full flex flex-col items-center justify-between py-1 text-[#78233f] font-extrabold text-[11px] shadow-md border border-[#e89db1]" title="Up / Down / Select">
+          <span class="text-[9px] leading-none text-[#7b2440] font-black">▲</span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#d6557b]/30 inline-block"></span>
+          <span class="text-[9px] leading-none text-[#7b2440] font-black">▼</span>
+        </button>
+
+        <button id="btnNavNext" onclick="handleNavNext()" class="w-6 h-8 flex items-center justify-center text-[#ffe2ea] active:scale-90" title="Next Item">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+      </div>
+
+      <!-- Right Soft / End Rocker -->
+      <button id="btnSoftRight" onclick="handleSoftRight()" class="w-14 h-8 rounded-full bg-[#f9bccd] shadow-sm active:translate-y-0.5 border border-[#e493a9] flex items-center justify-center text-[#7e2541] font-bold transition-all" title="Options / Forward">
+        <svg class="w-4 h-3 stroke-current stroke-2 fill-none" viewBox="0 0 24 12">
+          <path d="M2 9 C 8 2, 16 2, 22 9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- 12-KEY PHYSICAL NUMERIC KEYPAD -->
+    <div class="grid grid-cols-3 gap-x-3 gap-y-2.5 w-full px-1">
+      
+      <!-- Key 1 -->
+      <button onclick="pressKey('1')" id="key-1" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">1</span>
+        <span class="text-[8.5px] font-bold tracking-tighter leading-tight text-[#633e4d]">about me</span>
+      </button>
+
+      <!-- Key 2 -->
+      <button onclick="pressKey('2')" id="key-2" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">2</span>
+        <span class="text-[8.5px] font-bold tracking-wider leading-tight text-[#633e4d]">abc</span>
+      </button>
+
+      <!-- Key 3 -->
+      <button onclick="pressKey('3')" id="key-3" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">3</span>
+        <span class="text-[8.5px] font-bold tracking-wider leading-tight text-[#633e4d]">def</span>
+      </button>
+
+      <!-- Key 4 -->
+      <button onclick="pressKey('4')" id="key-4" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">4</span>
+        <span class="text-[8.5px] font-bold tracking-wider leading-tight text-[#633e4d]">ghi</span>
+      </button>
+
+      <!-- Key 5 -->
+      <button onclick="pressKey('5')" id="key-5" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">5</span>
+        <span class="text-[8.5px] font-bold tracking-wider leading-tight text-[#633e4d]">jkl</span>
+      </button>
+
+      <!-- Key 6 -->
+      <button onclick="pressKey('6')" id="key-6" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">6</span>
+        <span class="text-[8.5px] font-bold tracking-wider leading-tight text-[#633e4d]">mno</span>
+      </button>
+
+      <!-- Key 7 -->
+      <button onclick="pressKey('7')" id="key-7" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">7</span>
+        <span class="text-[8.5px] font-bold tracking-wider leading-tight text-[#633e4d]">pqrs</span>
+      </button>
+
+      <!-- Key 8 -->
+      <button onclick="pressKey('8')" id="key-8" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">8</span>
+        <span class="text-[8.5px] font-bold tracking-wider leading-tight text-[#633e4d]">tuv</span>
+      </button>
+
+      <!-- Key 9 -->
+      <button onclick="pressKey('9')" id="key-9" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">9</span>
+        <span class="text-[8.5px] font-bold tracking-wider leading-tight text-[#633e4d]">wxyz</span>
+      </button>
+
+      <!-- Key * -->
+      <button onclick="pressKey('*')" id="key-*" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-base font-black leading-none text-[#2d1b23]">*</span>
+        <span class="text-[8px] font-bold text-[#633e4d]">+</span>
+      </button>
+
+      <!-- Key 0 -->
+      <button onclick="pressKey('0')" id="key-0" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">0</span>
+        <span class="text-[8px] font-bold text-[#633e4d]">-</span>
+      </button>
+
+      <!-- Key # -->
+      <button onclick="pressKey('#')" id="key-#" class="phone-key h-11 rounded-full flex flex-col items-center justify-center border border-[#ffaec1] cursor-pointer">
+        <span class="text-sm font-black leading-none text-[#2d1b23]">#</span>
+        <span class="text-[7.5px] font-bold text-[#633e4d]">📷</span>
+      </button>
+
+    </div>
+
+    <!-- Phone Mic Pin Hole -->
+    <div class="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#82213e] shadow-inner opacity-75"></div>
+  </div>
+
+  <!-- Bottom Interactive Quick Actions Strip -->
+  <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-[#834f60]">
+    <button onclick="switchScreen('camera')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5">
+      <span>📷</span> Open Photo Booth (Page 2)
+    </button>
+    <button onclick="switchScreen('intro')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5">
+      <span>✨</span> Replay "CLOCK IT" Boot
+    </button>
+    <button onclick="switchScreen('resume')" class="px-3.5 py-1.5 bg-[#fbd2dc] hover:bg-[#fad8e1] rounded-full shadow-xs border border-[#ea99af] transition-all flex items-center gap-1.5">
+      <span>📄</span> View CV
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
