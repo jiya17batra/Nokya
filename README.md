@@ -2,7 +2,7 @@
 
 > A portfolio that feels less like a résumé and more like a tactile memory. 📱✨
 
-🔗 **[Dial into the Live Experience →](https://jiya-portfolio-2en7.vercel.app)**
+🔗 **[Dial into the Live Experience →]([https://jiya-portfolio-2en7.vercel.app](https://jiya17batra.github.io/Nokya/))**
 
 ---
 
